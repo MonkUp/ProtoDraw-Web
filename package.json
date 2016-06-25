@@ -1,0 +1,23 @@
+{
+  "name": "protodraw",
+  "version": "1.0.0",
+  "description": "Use digital ink to quickly draw and prototype applications",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProtoDraw/ProtoDraw-Web.git"
+  },
+  "author": "Avik Jain <avik@avikjain.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ProtoDraw/ProtoDraw-Web/issues"
+  },
+  "homepage": "https://github.com/ProtoDraw/ProtoDraw-Web#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "firebase": "^3.0.5"
+  }
+}
