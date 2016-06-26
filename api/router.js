@@ -41,6 +41,7 @@ router.get('/:username/:appName', function(req, res) {
 
 router.post('/appData/', function(req, res){
   var data = req.body;
+  console.log(JSON.stringify(req.body, null, 2));
   firebaseAppsRef.push(data);
   res.sendStatus(200);
 });
