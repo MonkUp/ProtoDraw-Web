@@ -41,6 +41,7 @@ app.controller('viewController', ['$scope','$http','$routeParams','appProperties
     $location.path('/'+$routeParams.username+'/'+$routeParams.appName);
     return;
   }
+
   $scope.appName = $rootScope.appData.appName;
   $scope.username = $rootScope.appData.username;
   console.log('viewController loaded');
