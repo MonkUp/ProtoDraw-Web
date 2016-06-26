@@ -6,7 +6,8 @@ var apiRouter = require('./api/router');
 
 
 var app = express();
-app.use(bodyParser.json());
+
+app.use(bodyParser.json({limit: '50mb'}));
 app.set('json spaces', 2);
 
 app.use(express.static('public'));
