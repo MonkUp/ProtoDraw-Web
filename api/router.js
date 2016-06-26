@@ -25,4 +25,9 @@ router.get('/:username/:appName', function(req, res) {
   });
 });
 
+router.post('/appData/', function(req, res){
+  var data = req.body;
+  firebaseAppsRef.push()
+})
+
 module.exports = router;
