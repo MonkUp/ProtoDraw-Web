@@ -28,6 +28,7 @@ app.controller('initialController', ['$scope','$http','$routeParams','$location'
     $http.get('/api/'+$routeParams.username+'/'+$routeParams.appName).success(function(data){
       //appProperties.setData(data);
       $rootScope.appData = data
+      console.log(JSON.stringify(data, null, 2));
       $location.path('/'+$routeParams.username+'/'+$routeParams.appName+'/'+data.initialViewName)
     }, function(err){
       console.log(err);
@@ -47,10 +48,12 @@ app.controller('viewController', ['$scope','$http','$routeParams','appProperties
   console.log('viewController loaded');
   $scope.viewName = $routeParams.viewName;
   for(var i = 0; i < $rootScope.appData.views.length; i++) {
-    if($rootScope.appData.views[i].viewName === $scope.viewName)
+    if($rootScope.appData.views[i].viewname === $scope.viewName)
       $scope.view = $rootScope.appData.views[i];
   }
 
+  $scope.imageUrl = 'http://monkup-avikj.rhcloud.com/api/image/'+$scope.username+'-'+$scope.appName+'-'+$scope.view.viewname+'.png';
+  console.log($scope.imageUrl);
   $scope.redirectToViewByName = function(targetViewName){
     console.log('going to '+targetViewName);
     $location.path('/'+$routeParams.username+'/'+$routeParams.appName+'/'+targetViewName)
