@@ -23,6 +23,7 @@ router.post('/appData', function(req, res){
 router.post('/image/:username/:appName/:viewName', function(req, res){
   console.log('got image post');
   //console.log(req.body);
+  console.log('req rawbody is'+ typeof req.rawBody)
   fs.writeFile(__dirname+"/images/"+req.params.username+'-'+req.params.appName+'-'+req.params.viewName+'.png', new Buffer(req.rawBody, "base64"), function(err) {
     if(err)
       return res.send(err);

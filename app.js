@@ -7,7 +7,7 @@ var apiRouter = require('./api/router');
 
 var app = express();
 app.use(function(req, res, next) {
-  if(req.params.username){
+  if(req.url.substring(0, 11) == '/api/image/'){
     req.rawBody = '';
 
     req.on('data', function(chunk) { 
