@@ -17,9 +17,9 @@ router.get('/:username/:appName', function(req, res) {
   firebaseAppsRef.once('value', function(appsDataSnapshot) {
     var apps = appsDataSnapshot.val();
     console.log(JSON.stringify(apps));
-    for(var i = 0; i < apps.length; i++) {
-      if(apps[i].username == req.params.username && apps[i].appName == req.params.appName) {
-        res.json(apps[i]);
+    for(var key in apps) {
+      if(apps[key].username == req.params.username && apps[key].appName == req.params.appName) {
+        res.json(apps[key]);
         return;
       }
     }
