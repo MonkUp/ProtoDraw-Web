@@ -15,7 +15,7 @@ var firebaseAppsRef = firebase.database().ref('apps');
 router.post('/image/:username/:appName/:viewName', function(req, res){
   console.log('got image post');
   //console.log(req.body);
-  fs.writeFile(__dirname+"/images/"+req.params.username+'-'+req.params.appName+'-'+req.params.viewName+'.png', new Buffer(req.body.data, "base64"), function(err) {
+  fs.writeFile(__dirname+"/images/"+req.params.username+'-'+req.params.appName+'-'+req.params.viewName+'.png', new Buffer(req.rawBody, "base64"), function(err) {
     res.sendStatus(200);
   });
 });
@@ -45,11 +45,5 @@ router.post('/appData/', function(req, res){
   firebaseAppsRef.push(data);
   res.sendStatus(200);
 });
-
-
-
-
-
-
 
 module.exports = router;

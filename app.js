@@ -6,7 +6,17 @@ var apiRouter = require('./api/router');
 
 
 var app = express();
+app.use(function(req, res, next) {
+  req.rawBody = '';
 
+  req.on('data', function(chunk) { 
+    req.rawBody += chunk;
+  });
+
+  req.on('end', function() {
+    next();
+  });
+});
 app.use(bodyParser.json({limit: '50mb'}));
 app.set('json spaces', 2);
 
