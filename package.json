@@ -7,6 +7,10 @@
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "npm": "2.15.1",
+    "node": "3.10.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ProtoDraw/ProtoDraw-Web.git"
