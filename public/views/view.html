@@ -1,4 +1,4 @@
-<img class="full-screen" ng-src="{{view.imageUrl}}" class="full-screen"/>
+<img class="full-screen" ng-src="/api/image/{{username}}/{{appName}}/{{view.viewName}}" class="full-screen"/>
 <div class="full-screen" ng-repeat="link in view.links">
   <p data-href="{{link.href}}" ng-click="redirectToViewByName(link.href)" style="top:{{link.top}}%;left:{{link.left}}%;width:{{link.width}}%;height:{{link.height}}%;"></p>
 </div>

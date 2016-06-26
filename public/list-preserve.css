@@ -1,0 +1,26 @@
+.preserve-list em, .preserve-list i {
+    font-style:italic;
+    display:inline;
+}
+.preserve-list strong, .preserve-list b {
+    font-weight: bold;
+    display:inline;
+}
+.preserve-list ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+.preserve-list ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+.preserve-list ul ul, ol ul {
+    list-style-type: circle;
+    list-style-position: inside;
+    margin-left: 15px;
+}
+.preserve-list ol ol, ul ol {
+    list-style-type: lower-latin;
+    list-style-position: inside;
+    margin-left: 15px;
+}
