@@ -16,7 +16,7 @@ router.post('/image/:username/:appName/:viewName', function(req, res){
   console.log('got image post');
   //console.log(req.body);
   fs.writeFile(__dirname+"/images/"+req.params.username+'-'+req.params.appName+'-'+req.params.viewName+'.png', new Buffer(req.rawBody, "base64"), function(err) {
-    res.sendStatus(200);
+    res.send('fuck u sahas');
   });
 });
 
@@ -40,6 +40,7 @@ router.get('/:username/:appName', function(req, res) {
 });
 
 router.post('/appData/', function(req, res){
+  console.log('got appdata');
   var data = req.body;
   console.log(JSON.stringify(req.body, null, 2));
   firebaseAppsRef.push(data);
