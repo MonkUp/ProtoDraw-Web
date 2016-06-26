@@ -16,6 +16,8 @@ router.post('/image/:username/:appName/:viewName', function(req, res){
   console.log('got image post');
   //console.log(req.body);
   fs.writeFile(__dirname+"/images/"+req.params.username+'-'+req.params.appName+'-'+req.params.viewName+'.png', new Buffer(req.rawBody, "base64"), function(err) {
+    if(err)
+      return res.send(err);
     res.send('fuck u sahas');
   });
 });
