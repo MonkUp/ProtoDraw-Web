@@ -13,10 +13,13 @@ app.use(function(req, res, next) {
     req.on('data', function(chunk) { 
       req.rawBody += chunk;
     });
-
-    
-  }
+    req.on('end', function() {
       next();
+    }); 
+    
+  }else{
+      next();
+    }
 });
 app.use(bodyParser.json({limit: '50mb'}));
 app.set('json spaces', 2);
