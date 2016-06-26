@@ -7,15 +7,16 @@ var apiRouter = require('./api/router');
 
 var app = express();
 app.use(function(req, res, next) {
-  req.rawBody = '';
+  if(req.params.username){
+    req.rawBody = '';
 
-  req.on('data', function(chunk) { 
-    req.rawBody += chunk;
-  });
+    req.on('data', function(chunk) { 
+      req.rawBody += chunk;
+    });
 
-  req.on('end', function() {
-    next();
-  });
+    
+  }
+      next();
 });
 app.use(bodyParser.json({limit: '50mb'}));
 app.set('json spaces', 2);
@@ -38,6 +39,6 @@ app.listen(config.PORT, config.HOST, function(err) {
   if(err) {
     return console.error(err);
   }
-  console.log('app listening on port 3000');
+  console.log('app listening on '+config.HOST+':'+config.PORT);
 })
 

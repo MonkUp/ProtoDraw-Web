@@ -11,21 +11,22 @@ firebase.initializeApp({
   databaseURL: config.FIREBASE_URL
 });
 
-var firebaseAppsRef = firebase.database().ref('apps');
-router.post('/appData/', function(req, res){
+ var firebaseAppsRef = firebase.database().ref('apps');
+router.post('/appData', function(req, res){
   console.log('got appdata');
   var data = req.body;
   console.log(JSON.stringify(req.body, null, 2));
   firebaseAppsRef.push(data);
   res.sendStatus(200);
 });
+
 router.post('/image/:username/:appName/:viewName', function(req, res){
   console.log('got image post');
   //console.log(req.body);
   fs.writeFile(__dirname+"/images/"+req.params.username+'-'+req.params.appName+'-'+req.params.viewName+'.png', new Buffer(req.rawBody, "base64"), function(err) {
     if(err)
       return res.send(err);
-    res.send('fuck u sahas');
+    res.send('hi sahas');
   });
 });
 

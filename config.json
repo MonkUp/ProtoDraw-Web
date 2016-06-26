@@ -1,6 +1,6 @@
 {
   "PORT": 3000,
-  "HOST": "10.10.2.95",
+  "HOST": "127.0.0.1",
   "FIREBASE_CREDENTIALS_PATH": "credentials/ProtoDraw-8343e29cc965.json",
   "FIREBASE_URL": "https://protodraw-c64e7.firebaseio.com/"
 }
