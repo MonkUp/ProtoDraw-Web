@@ -12,6 +12,13 @@ firebase.initializeApp({
 });
 
 var firebaseAppsRef = firebase.database().ref('apps');
+router.post('/appData/', function(req, res){
+  console.log('got appdata');
+  var data = req.body;
+  console.log(JSON.stringify(req.body, null, 2));
+  firebaseAppsRef.push(data);
+  res.sendStatus(200);
+});
 router.post('/image/:username/:appName/:viewName', function(req, res){
   console.log('got image post');
   //console.log(req.body);
@@ -41,12 +48,6 @@ router.get('/:username/:appName', function(req, res) {
   });
 });
 
-router.post('/appData/', function(req, res){
-  console.log('got appdata');
-  var data = req.body;
-  console.log(JSON.stringify(req.body, null, 2));
-  firebaseAppsRef.push(data);
-  res.sendStatus(200);
-});
+
 
 module.exports = router;
