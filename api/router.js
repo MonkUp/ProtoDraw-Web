@@ -14,7 +14,7 @@ firebase.initializeApp({
 var firebaseAppsRef = firebase.database().ref('apps')
 
 router.get('/:username/:appName', function(req, res) {
-  firebaseAppsRef.once('value', function(appsDataSnapshot) {
+  /*firebaseAppsRef.once('value', function(appsDataSnapshot) {
     var apps = appsDataSnapshot.val();
     for(var i = 0; i < apps.length; i++) {
       if(apps[i].username == req.params.username && apps[i].appName == req.params.appName) {
@@ -23,6 +23,38 @@ router.get('/:username/:appName', function(req, res) {
       }
     }
     res.sendStatus(404);
+  })*/
+  res.json({
+    username: 'avik',
+    appName: 'MyTestApp',
+    initialViewName: 'login',
+    views: [
+      {
+        viewName: 'login',
+        image: 'login.png',
+        links: [
+          {
+            href: 'main',
+            top: 0,
+            left: 90,
+            width: 10,
+            height: 7
+          }
+        ]
+      },{
+        viewName: 'main',
+        image: 'login.png',
+        links: [
+          {
+            href: 'login',
+            top: 45,
+            left: 40,
+            width: 20,
+            height: 10
+          }
+        ]
+      }
+    ]
   })
 });
 

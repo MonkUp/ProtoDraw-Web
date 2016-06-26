@@ -27,7 +27,7 @@ app.controller('initialController', ['$scope','$http','$routeParams','$location'
     console.log('in initialcontroller');
     $http.get('/api/'+$routeParams.username+'/'+$routeParams.appName).success(function(data){
       //appProperties.setData(data);
-      $rootScope.blah = data
+      $rootScope.appData = data
       $location.path('/'+$routeParams.username+'/'+$routeParams.appName+'/'+data.initialViewName)
     }, function(err){
       console.log(err);
@@ -37,15 +37,19 @@ app.controller('initialController', ['$scope','$http','$routeParams','$location'
 
 //loads views
 app.controller('viewController', ['$scope','$http','$routeParams','appProperties', '$rootScope','$location',function($scope,$http,$routeParams,appProperties,$rootScope,$location){
-  if($rootScope.blah == null){
+  if($rootScope.appData == null){
     $location.path('/'+$routeParams.username+'/'+$routeParams.appName);
-    return
+    return;
   }
   console.log('viewController loaded');
-  console.log($rootScope.blah)
   $scope.viewName = $routeParams.viewName;
-  for(var i = 0; i < $rootScope.blah.views.length; i++) {
-    if($rootScope.blah.views[i].viewName === $scope.viewName)
-      $scope.view = $rootScope.blah.views[i];
+  for(var i = 0; i < $rootScope.appData.views.length; i++) {
+    if($rootScope.appData.views[i].viewName === $scope.viewName)
+      $scope.view = $rootScope.appData.views[i];
+  }
+
+  $scope.redirectToViewByName = function(targetViewName){
+    console.log('going to '+targetViewName);
+    $location.path('/'+$routeParams.username+'/'+$routeParams.appName+'/'+targetViewName)
   }
 }]);   
